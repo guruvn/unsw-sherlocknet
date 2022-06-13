@@ -1,0 +1,25 @@
+﻿<wpf:ResourceDictionary xml:space="preserve" xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml" xmlns:s="clr-namespace:System;assembly=mscorlib" xmlns:ss="urn:shemas-jetbrains-com:settings-storage-xaml" xmlns:wpf="http://schemas.microsoft.com/winfx/2006/xaml/presentation">
+	<s:String x:Key="/Default/Environment/UnitTesting/UnitTestSessionStore/Sessions/=4626d3ec_002Da712_002D40a3_002Daed3_002Dd8ae27877e85/@EntryIndexedValue">&lt;SessionState ContinuousTestingMode="0" Name="ParseTest" xmlns="urn:schemas-jetbrains-com:jetbrains-ut-session"&gt;
+  &lt;TestAncestor&gt;
+    &lt;TestId&gt;xUnit::D942205E-8B24-4A72-B807-BD2D2671C124::net6.0::Sherlock.App.Tests.ParserTest.ParseTest_DuplicatedFlagException&lt;/TestId&gt;
+    &lt;TestId&gt;xUnit::D942205E-8B24-4A72-B807-BD2D2671C124::net6.0::Sherlock.App.Tests.ParserTest.ParseTest_3ActionsToExecute&lt;/TestId&gt;
+    &lt;TestId&gt;xUnit::D942205E-8B24-4A72-B807-BD2D2671C124::net6.0::Sherlock.App.Tests.ParserTest.ParseTest_NotSupportedFlagException&lt;/TestId&gt;
+    &lt;TestId&gt;xUnit::D942205E-8B24-4A72-B807-BD2D2671C124::net6.0::Sherlock.App.Tests.HttpClientFacadeTest.ExecuteAsyncTest&lt;/TestId&gt;
+    &lt;TestId&gt;xUnit::D942205E-8B24-4A72-B807-BD2D2671C124::net6.0::Sherlock.App.Tests.HttpClientFacadeTest.ExecuteAsync_OK&lt;/TestId&gt;
+    &lt;TestId&gt;xUnit::D942205E-8B24-4A72-B807-BD2D2671C124::net6.0::Sherlock.App.Tests.FileHelperTest.DeserializeAsyncTest&lt;/TestId&gt;
+  &lt;/TestAncestor&gt;
+&lt;/SessionState&gt;</s:String>
+	<s:String x:Key="/Default/Environment/UnitTesting/UnitTestSessionStore/Sessions/=6ed80e71_002D6c5b_002D4dec_002Db05e_002D6280f025e8ec/@EntryIndexedValue">&lt;SessionState ContinuousTestingMode="0" Name="DeserializeAsyncTest" xmlns="urn:schemas-jetbrains-com:jetbrains-ut-session"&gt;
+  &lt;TestAncestor&gt;
+    &lt;TestId&gt;xUnit::D942205E-8B24-4A72-B807-BD2D2671C124::net6.0::Sherlock.App.Tests.FileHelperTest.DeserializeAsyncTest&lt;/TestId&gt;
+  &lt;/TestAncestor&gt;
+&lt;/SessionState&gt;</s:String>
+	<s:String x:Key="/Default/Environment/UnitTesting/UnitTestSessionStore/Sessions/=7ecf8c83_002D4a72_002D4198_002D9145_002Db7483f24fd94/@EntryIndexedValue">&lt;SessionState ContinuousTestingMode="0" IsActive="True" Name="DeserializeAsyncTest #2" xmlns="urn:schemas-jetbrains-com:jetbrains-ut-session"&gt;
+  &lt;Or&gt;
+    &lt;TestAncestor&gt;
+      &lt;TestId&gt;xUnit::D942205E-8B24-4A72-B807-BD2D2671C124::net6.0::Sherlock.App.Tests.FileHelperTest.DeserializeAsyncTest&lt;/TestId&gt;
+      &lt;TestId&gt;xUnit::D942205E-8B24-4A72-B807-BD2D2671C124::net6.0::Sherlock.App.Tests.HttpClientFacadeTest.ExecuteAsyncTest&lt;/TestId&gt;
+    &lt;/TestAncestor&gt;
+    &lt;ProjectFile&gt;D942205E-8B24-4A72-B807-BD2D2671C124/f:ParserTest.cs&lt;/ProjectFile&gt;
+  &lt;/Or&gt;
+&lt;/SessionState&gt;</s:String></wpf:ResourceDictionary>

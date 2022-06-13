@@ -2,6 +2,8 @@
 Microsoft Visual Studio Solution File, Format Version 12.00
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Sherlock.App", "Sherlock.App\Sherlock.App.csproj", "{69F82BEE-527F-4AC4-8EC5-495403991F8A}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Sherlock.App.Tests", "Sherlock.App.Tests\Sherlock.App.Tests.csproj", "{D942205E-8B24-4A72-B807-BD2D2671C124}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -12,5 +14,9 @@ Global
 		{69F82BEE-527F-4AC4-8EC5-495403991F8A}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{69F82BEE-527F-4AC4-8EC5-495403991F8A}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{69F82BEE-527F-4AC4-8EC5-495403991F8A}.Release|Any CPU.Build.0 = Release|Any CPU
+		{D942205E-8B24-4A72-B807-BD2D2671C124}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{D942205E-8B24-4A72-B807-BD2D2671C124}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{D942205E-8B24-4A72-B807-BD2D2671C124}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{D942205E-8B24-4A72-B807-BD2D2671C124}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 EndGlobal
