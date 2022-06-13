@@ -1,3 +1,9 @@
+/*
+  https://github.com/sherlock-project/sherlock/blob/master/sherlock/resources/data.json
+  
+  The information of 358 sites in this file are collected from the link above.
+  However the actual data structure of the data.json is changed to cater for my implementation. 
+*/
 [
   {
     "name": "2Dimensions",

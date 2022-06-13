@@ -13,7 +13,7 @@ services:
   runtime:
     image: mcr.microsoft.com/dotnet/runtime:6.0
     volumes:
-      - ./.output:/opt/app
+      - ./.output/dotnet:/opt/app
     working_dir: /opt/app
     command:
       - dotnet

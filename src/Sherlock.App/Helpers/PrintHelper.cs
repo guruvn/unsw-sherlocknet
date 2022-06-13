@@ -1,8 +1,11 @@
 namespace Sherlock.App.Helpers;
 
+/// <summary>
+/// PrintHelper is a set of helper functions that facilitate the color-printing purpose on the console screen
+/// </summary>
 public static class PrintHelper
 {
-    private static void DumpWith(this string text, ConsoleColor color)
+    public static void DumpWith(this string text, ConsoleColor color)
     {
         var foregroundColor = Console.ForegroundColor;
         Console.ForegroundColor = color;

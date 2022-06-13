@@ -1,57 +1,70 @@
-﻿using System.Collections.Immutable;
+﻿using System;
+using System.Collections.Immutable;
 using System.Reflection;
 using Sherlock.App;
 using Sherlock.App.Exceptions;
 using Sherlock.App.Helpers;
 // ReSharper disable ConstantConditionalAccessQualifier
 
+Console.Clear();
+
 new WenceyWang.FIGlet.AsciiArt("UNSW - SherlockNET")
     .Result
     .ToImmutableList()
     .ForEach(text => text.YellowDump());
 
-var supportedFlags = new List<Flag> {
-    Flag.Create("-h", "--help", "Display help message"),
-    Flag.Create("-v", "--version", "Dcleisplay the application version"),
-    Flag.Create("-u", "--user-names", "One or more usernames (seperated by commas) to check with social networks."),
-    Flag.Create("-d", "--debug", "Printing out all debug log information."),
-    Flag.Create("-s", "--site", "Hunt in a specific social site"),
-    Flag.Create("-ls", "--list-sites", "List all supported sites")
-}.ToImmutableList();
-
+//Load all supported sites from the supplied data.json file into memory
 var supportedSites = await "data.json".DeserializeAsync().ConfigureAwait(false);
 
+//Print out help information if no argument provided
 if (args.Length == 0 || string.IsNullOrWhiteSpace(args[0])) {
-    supportedFlags.ForEach(flag => Console.WriteLine($"{flag.Name,-20}{flag.Abbreviation,-10}{flag.Description}"));
+    Constant.SupportedFlags.ForEach(flag => Console.WriteLine($"{flag.Name,-20}{flag.Abbreviation,-10}{flag.Description}"));
     return;
 }
 
 try
 {
-    var instructions = args[0].Parse(supportedFlags);
+    //Build instructions from arguments that sent by CLI
+    var instructions = args[0].Parse(Constant.SupportedFlags);
     var client = HttpClientFacade.Create();
+    "Please wait...".DumpWith(ConsoleColor.White);
+    
+    // Scan the nominated user across all supported sites if no specific site nominated
     var specificSite = instructions.FirstOrDefault(site => site.Key.Name == "--site").Value?.FirstOrDefault();
-
     if (string.IsNullOrWhiteSpace(specificSite))
+    {
         foreach (var site in supportedSites)
             await site.HuntAsync(client,
                 instructions.Single(i => i.Key.Name == "--user-names").Value.ToImmutableList(),
                 instructions.Any(i => i.Key.Name == "--debug"));
-    else
-        await supportedSites
-            .Single(site => string.Compare(site.Name, specificSite, StringComparison.InvariantCultureIgnoreCase) == 0)
-            .HuntAsync(client,
-                instructions.Single(i => i.Key.Name == "--user-names").Value.ToImmutableList(),
-                instructions.Any(i => i.Key.Name == "--debug"));
+        
+        return;
+    }
+    
+    //Only scan the user on nominated site if provided
+    var nominatedSite = supportedSites.SingleOrDefault(site
+        => string.Compare(site.Name, specificSite, StringComparison.InvariantCultureIgnoreCase) == 0);
+
+    if (nominatedSite == null)
+        throw new NotSupportedSiteException($"{specificSite} is not supported yet.");
+
+    await nominatedSite.HuntAsync(client,
+        instructions.Single(i => i.Key.Name == "--user-names").Value.ToImmutableList(),
+        instructions.Any(i => i.Key.Name == "--debug"));
 }
 catch (NotSupportedFlagException ex)
 {
     ex.Message.RedDump();
-    supportedFlags.ForEach(flag => Console.WriteLine($"{flag.Name,-20}{flag.Abbreviation,-10}{flag.Description}"));
+    Constant.SupportedFlags.ForEach(flag => Console.WriteLine($"{flag.Name,-20}{flag.Abbreviation,-10}{flag.Description}"));
+}
+catch (NotSupportedSiteException ex)
+{
+    ex.Message.RedDump();
+    Constant.SupportedFlags.ForEach(flag => Console.WriteLine($"{flag.Name,-20}{flag.Abbreviation,-10}{flag.Description}"));
 }
 catch (PrintingHelpException)
 {
-    supportedFlags.ForEach(flag => Console.WriteLine($"{flag.Name,-20}{flag.Abbreviation,-10}{flag.Description}"));
+    Constant.SupportedFlags.ForEach(flag => Console.WriteLine($"{flag.Name,-20}{flag.Abbreviation,-10}{flag.Description}"));
 }
 catch (DisplayVersionException)
 {
@@ -70,5 +83,6 @@ catch (DuplicatedFlagException ex)
 }
 catch (Exception ex)
 {
-    $"Failed to process. \n[Reason] {ex.Message}\n [StackTrace]: {ex.StackTrace}".RedDump();
+    $"Failed to process. \n[Reason] {ex.Message}. Check the help info below".RedDump();
+    Constant.SupportedFlags.ForEach(flag => Console.WriteLine($"{flag.Name,-20}{flag.Abbreviation,-10}{flag.Description}"));
 }

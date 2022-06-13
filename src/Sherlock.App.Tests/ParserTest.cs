@@ -1,5 +1,4 @@
 using System;
-using System.Collections.Generic;
 using System.Collections.Immutable;
 using FluentAssertions;
 using Sherlock.App.Exceptions;
@@ -11,14 +10,9 @@ namespace Sherlock.App.Tests;
 public class ParserTest
 {
     private readonly IImmutableList<Flag> _supportedFlags;
+
     public ParserTest()
-        => _supportedFlags = new List<Flag> {
-            Flag.Create("-h", "--help", "Display help message"),
-            Flag.Create("-v", "--version", "Display the application version"),
-            Flag.Create("-u", "--user-names", "One or more usernames (seperated by commas) to check with social networks."),
-            Flag.Create("-t", "--timeout", "Time (in seconds) to wait for response. Default timeout is infinity."),
-            Flag.Create("-p", "--print-all", "Print all sites including sites where the user not found. Default is only printing found sites")
-        }.ToImmutableList();
+        => _supportedFlags = Constant.SupportedFlags;
     
     [Theory]
     [InlineData("-n nick-name")]

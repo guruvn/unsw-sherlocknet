@@ -2,6 +2,9 @@ using System.Net;
 
 namespace Sherlock.App;
 
+/// <summary>
+/// Result represents for the actual result of user's existence checking on a particular site
+/// </summary>
 public class Result
 {
     public string Name { get; }

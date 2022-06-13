@@ -2,9 +2,14 @@ using System.Collections.Immutable;
 using System.Net;
 using Newtonsoft.Json;
 using Sherlock.App.Helpers;
+#pragma warning disable CS8618
 
 namespace Sherlock.App;
 
+/// <summary>
+/// Site encapsulates all important information about the actual social site that we need to
+/// establish connection and to check for the user's existence
+/// </summary>
 public sealed record Site
 {
     public string Name { get; init; }
@@ -26,6 +31,12 @@ public sealed record Site
     public dynamic? Payload { get; init; }
     public string? RegexCheck { get; init; }
 
+    /// <summary>
+    /// Check the existence of the nominated users
+    /// </summary>
+    /// <param name="client">A http client that uses for sending http request</param>
+    /// <param name="usernames">The nominated list of username whose existence need to be checked</param>
+    /// <param name="debug">A true/false value to indicate debug-printing</param>
     public async Task HuntAsync(HttpClientFacade client, IImmutableList<string> usernames, bool debug)
     {
         $"{nameof(Site)}::HuntAsync(...) => \n[User]: {JsonConvert.SerializeObject(usernames)} \n[Site]: {JsonConvert.SerializeObject(this)}".DumpFor(debug);

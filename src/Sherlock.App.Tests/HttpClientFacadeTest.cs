@@ -17,7 +17,8 @@ public sealed class HttpClientFacadeTest
             Url = "https://www.ebay.com/usr/{}",
             MainUrl = "https://www.ebay.com/",
             UserNameClaimed = "blue",
-            UserNameUnclaimed = "noonewouldeverusethis7"
+            UserNameUnclaimed = "noonewouldeverusethis7",
+            RegexCheck = null
         };
     }
 
